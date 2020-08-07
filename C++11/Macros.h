@@ -8,7 +8,8 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-#define NAMESPACE_START namespace stl {
+#define SPACE stl
+#define NAMESPACE_START namespace SPACE {
 #define NAMESPACE_END }
 
 
