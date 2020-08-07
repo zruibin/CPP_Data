@@ -18,6 +18,7 @@
 #include <deque>
 #include <forward_list>
 #include <list>
+#include <set>
 
 #include "Macros.h"
 
@@ -37,6 +38,8 @@ void testVector(void);
 void testDeque(void);
 void testForward_list(void);
 void testList(void);
+void testSet(void);
+void testMultiset(void);
 
 void testMainContainer(void)
 {
@@ -47,7 +50,8 @@ void testMainContainer(void)
     testDeque();
     testForward_list();
     testList();
-    
+    testSet();
+    testMultiset();
     
     std::cout<<"---------------------------testMainContainer end--------------------------------"<<std::endl;
 }
@@ -248,6 +252,79 @@ void testList(void)
                 << std::endl;
 
     std::cout<<"---------------------------testList start--------------------------------"<<std::endl;
+}
+
+void testSet(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testSet start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/set
+    //含有 Key 类型对象的已排序集。用比较函数 比较 (Compare) 进行排序。搜索、移除和插入拥有对数复杂度。 set 通常以红黑树实现。
+
+    std::set<int> set1 = {1, 1, 3, 5, 7};
+    SPACE::print(set1);
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << std::endl;
+    
+    std::set<int>::iterator search = set1.find(5);
+    if (search != set1.end()) {
+        std::cout << (*search) << std::endl;
+        set1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::print(set1);
+
+    set1.insert(33);
+    set1.insert(23);
+    SPACE::print(set1);
+
+    set1.clear();
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testSet start--------------------------------"<<std::endl;
+}
+
+void testMultiset(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testMultiset start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/multiset
+    //不同于 set ，它允许多个关键拥有等价的值。
+
+    std::multiset<int> set1 = {1, 1, 2, 2, 3, 5, 7};
+    SPACE::print(set1);
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << std::endl;
+    
+    std::set<int>::iterator search = set1.find(5);
+    if (search != set1.end()) {
+        std::cout << (*search) << std::endl;
+        set1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::print(set1);
+
+    set1.insert(33);
+    set1.insert(23);
+    set1.insert(23);
+    SPACE::print(set1);
+
+    set1.clear();
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testMultiset start--------------------------------"<<std::endl;
 }
 
 #endif /* !CONTAINERTEST_H */
