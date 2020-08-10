@@ -20,6 +20,7 @@
 #include <list>
 #include <set>
 #include <map>
+#include <unordered_set>
 
 #include "Macros.h"
 
@@ -54,6 +55,8 @@ void testSet(void);
 void testMultiset(void);
 void testMap(void);
 void testMultimap(void);
+void testUnordered_set(void);
+void testUnordered_multiset(void);
 
 void testMainContainer(void)
 {
@@ -68,6 +71,8 @@ void testMainContainer(void)
     testMultiset();
     testMap();
     testMultimap();
+    testUnordered_set();
+    testUnordered_multiset();
     
     std::cout<<"---------------------------testMainContainer end--------------------------------"<<std::endl;
 }
@@ -431,6 +436,121 @@ void testMultimap(void)
                 << std::endl;
 
     std::cout<<"---------------------------testMultimap start--------------------------------"<<std::endl;
+}
+
+void testUnordered_set(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testUnordered_set start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/unordered_set
+    /*unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、插入和移除拥有平均常数时间复杂度。
+        在内部，元素并不以任何特别顺序排序，而是组织进桶中。元素被放进哪个桶完全依赖其值的哈希。
+        这允许对单独元素的快速访问，因为哈希一旦确定，就准确指代元素被放入的桶。
+        不可修改容器元素（即使通过非 const 迭代器），因为修改可能更改元素的哈希，并破坏容器。
+    */
+    std::unordered_set<int> set1 = {1, 1, 3, 5, 7};
+
+    SPACE::print(set1);
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+    
+    std::unordered_set<int>::iterator search = set1.find(5);
+    if (search != set1.end()) {
+        std::cout << (*search) << std::endl;
+        set1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::print(set1);
+
+    set1.insert(33);
+    set1.insert(23);
+    SPACE::print(set1);
+
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+
+    set1.clear();
+
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+
+    std::cout<<"---------------------------testUnordered_set start--------------------------------"<<std::endl;
+}
+
+void testUnordered_multiset(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testUnordered_multiset start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/unordered_multiset
+    /*nordered_multiset 是关联容器，含有可能非唯一 Key 类型对象的集合。搜索、插入和移除拥有平均常数时间复杂度。
+        元素在内部并不以任何顺序排序，只是被组织到桶中。
+        元素被放入哪个桶完全依赖其值的哈希。这允许快速访问单独的元素，因为一旦计算哈希，它就指代放置该元素的准确的桶。
+    */
+    std::unordered_multiset<int> set1 = {1, 1, 1, 3, 3, 5, 5, 7};
+
+    SPACE::print(set1);
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+    
+    std::unordered_set<int>::iterator search = set1.find(5);
+    if (search != set1.end()) {
+        std::cout << (*search) << std::endl;
+        set1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::print(set1);
+
+    set1.insert(33);
+    set1.insert(23);
+    SPACE::print(set1);
+
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+
+    set1.clear();
+
+    std::cout << "size: " << set1.size()
+                << " max_size: " << set1.max_size()
+                << " is_empty: " << set1.empty()
+                << " bucket_count: " << set1.bucket_count()
+                << " max_bucket_count: " << set1.max_bucket_count()
+                << " load_factor:" << set1.load_factor()
+                << " max_load_factor:" << set1.max_load_factor()
+                << std::endl;
+
+    std::cout<<"---------------------------testUnordered_multiset start--------------------------------"<<std::endl;
 }
 
 #endif /* !CONTAINERTEST_H */
