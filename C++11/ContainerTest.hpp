@@ -19,6 +19,7 @@
 #include <forward_list>
 #include <list>
 #include <set>
+#include <map>
 
 #include "Macros.h"
 
@@ -27,7 +28,18 @@ template<typename T>
 void print(T t)
 {
     for(auto &i : t) {
-        std::cout << i << " ";
+        std::cout << i << " | ";
+    }
+    std::cout<<'\n';
+}
+NAMESPACE_END
+
+NAMESPACE_START
+template<typename T>
+void printMap(T t)
+{
+    for(auto &i : t) {
+        std::cout << i.first << ":" << i.second << " ";
     }
     std::cout<<'\n';
 }
@@ -40,6 +52,8 @@ void testForward_list(void);
 void testList(void);
 void testSet(void);
 void testMultiset(void);
+void testMap(void);
+void testMultimap(void);
 
 void testMainContainer(void)
 {
@@ -52,6 +66,8 @@ void testMainContainer(void)
     testList();
     testSet();
     testMultiset();
+    testMap();
+    testMultimap();
     
     std::cout<<"---------------------------testMainContainer end--------------------------------"<<std::endl;
 }
@@ -325,6 +341,96 @@ void testMultiset(void)
                 << std::endl;
 
     std::cout<<"---------------------------testMultiset start--------------------------------"<<std::endl;
+}
+
+void testMap(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testMap start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/map
+    //map 通常实现为红黑树。
+
+    std::map<std::string, int> map1 = {
+        {"1", 1}, {"2", 2}, {"3", 3}, {"4", 4},
+    };
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+
+    map1.insert({"5", 5});
+    map1["6"] = 6;
+    SPACE::printMap(map1);
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+    
+    std::cout << "3 -> " << map1["3"] << std::endl;
+
+    std::map<std::string, int>::iterator search = map1.find("2");
+    if (search != map1.end()) {
+        std::cout << search->first << " " << search->second << std::endl;
+        map1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::printMap(map1);
+
+    map1.clear();
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testMap start--------------------------------"<<std::endl;
+}
+
+void testMultimap(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testMultimap start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/multimap
+    //含有键值对的已排序列表，同时容许多个元素拥有同一键,拥有等价键的键值对的顺序就是插入顺序，且不会更改。
+
+    std::multimap<std::string, int> map1 = {
+        {"1", 1}, {"1", 1}, {"1", 1}, {"2", 2}, {"3", 3}, {"3", 3}, {"4", 4},
+    };
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+
+    map1.insert({"5", 5});
+    // map1["6"] = 6; //不允许
+    SPACE::printMap(map1);
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+    
+    // std::cout << "3 -> " << map1["3"] << std::endl; //不允许通过key访问
+
+    std::map<std::string, int>::iterator search = map1.find("2");
+    if (search != map1.end()) {
+        std::cout << search->first << " " << search->second << std::endl;
+        map1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::printMap(map1);
+
+    map1.clear();
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testMultimap start--------------------------------"<<std::endl;
 }
 
 #endif /* !CONTAINERTEST_H */
