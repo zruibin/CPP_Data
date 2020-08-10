@@ -21,6 +21,7 @@
 #include <set>
 #include <map>
 #include <unordered_set>
+#include <unordered_map>
 
 #include "Macros.h"
 
@@ -40,7 +41,7 @@ template<typename T>
 void printMap(T t)
 {
     for(auto &i : t) {
-        std::cout << i.first << ":" << i.second << " ";
+        std::cout << i.first << ":" << i.second << " | ";
     }
     std::cout<<'\n';
 }
@@ -57,6 +58,8 @@ void testMap(void);
 void testMultimap(void);
 void testUnordered_set(void);
 void testUnordered_multiset(void);
+void testUnordered_map(void);
+void testUnordered_multimap(void);
 
 void testMainContainer(void)
 {
@@ -73,6 +76,8 @@ void testMainContainer(void)
     testMultimap();
     testUnordered_set();
     testUnordered_multiset();
+    testUnordered_map();
+    testUnordered_multimap();
     
     std::cout<<"---------------------------testMainContainer end--------------------------------"<<std::endl;
 }
@@ -232,7 +237,7 @@ void testForward_list(void)
     list1.merge(list2);
     SPACE::print(list1);
 
-    std::cout<<"---------------------------testForward_list start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testForward_list end--------------------------------"<<std::endl;
 }
 
 void testList(void)
@@ -272,7 +277,7 @@ void testList(void)
                 << " is_empty: " << list1.empty()
                 << std::endl;
 
-    std::cout<<"---------------------------testList start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testList end--------------------------------"<<std::endl;
 }
 
 void testSet(void)
@@ -308,7 +313,7 @@ void testSet(void)
                 << " is_empty: " << set1.empty()
                 << std::endl;
 
-    std::cout<<"---------------------------testSet start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testSet end--------------------------------"<<std::endl;
 }
 
 void testMultiset(void)
@@ -345,7 +350,7 @@ void testMultiset(void)
                 << " is_empty: " << set1.empty()
                 << std::endl;
 
-    std::cout<<"---------------------------testMultiset start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testMultiset end--------------------------------"<<std::endl;
 }
 
 void testMap(void)
@@ -390,7 +395,7 @@ void testMap(void)
                 << " is_empty: " << map1.empty()
                 << std::endl;
 
-    std::cout<<"---------------------------testMap start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testMap end--------------------------------"<<std::endl;
 }
 
 void testMultimap(void)
@@ -435,7 +440,7 @@ void testMultimap(void)
                 << " is_empty: " << map1.empty()
                 << std::endl;
 
-    std::cout<<"---------------------------testMultimap start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testMultimap end--------------------------------"<<std::endl;
 }
 
 void testUnordered_set(void)
@@ -493,7 +498,7 @@ void testUnordered_set(void)
                 << " max_load_factor:" << set1.max_load_factor()
                 << std::endl;
 
-    std::cout<<"---------------------------testUnordered_set start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testUnordered_set end--------------------------------"<<std::endl;
 }
 
 void testUnordered_multiset(void)
@@ -550,7 +555,141 @@ void testUnordered_multiset(void)
                 << " max_load_factor:" << set1.max_load_factor()
                 << std::endl;
 
-    std::cout<<"---------------------------testUnordered_multiset start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testUnordered_multiset end--------------------------------"<<std::endl;
 }
+
+void testUnordered_map(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testUnordered_map start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/unordered_map
+    /*
+        unordered_map 是关联容器，含有带唯一键的键-值 pair 。搜索、插入和元素移除拥有平均常数时间复杂度。
+        元素在内部不以任何特定顺序排序，而是组织进桶中。
+        元素放进哪个桶完全依赖于其键的哈希。这允许对单独元素的快速访问，因为一旦计算哈希，则它准确指代元素所放进的桶。
+    */
+
+    std::unordered_map<std::string, int> map1 = {
+        {"1", 1}, {"1", 1}, {"1", 1}, {"2", 2}, {"3", 3}, {"4", 4},
+    };
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+
+    map1.insert({"5", 5});
+    map1["6"] = 6;
+    SPACE::printMap(map1);
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+    
+    std::cout << "3 -> " << map1["3"] << std::endl;
+
+    std::unordered_map<std::string, int>::iterator search = map1.find("2");
+    if (search != map1.end()) {
+        std::cout << search->first << " " << search->second << std::endl;
+        map1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::printMap(map1);
+
+    /*C++20
+    if (map1.contains("4")) {
+        std::cout << "Found\n";
+    } else {
+        std::cout << "Not found\n";
+    }
+    */
+
+    map1.clear();
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+
+    std::cout<<"---------------------------testUnordered_map end--------------------------------"<<std::endl;
+}
+
+void testUnordered_multimap(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testUnordered_multimap start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/unordered_multimap
+    /*
+        unordered_multimap 是无序关联容器，支持等价的关键（一个 unordered_multimap 可含有每个关键值的多个副本）和将关键与另一类型的值关联。 
+        unordered_multimap 类支持向前迭代器。搜索、插入和移除拥有平均常数时间复杂度。
+        元素在内部不以任何特定顺序排序，而是组织到桶中。
+        元素被放进哪个桶完全依赖于其关键的哈希。
+        这允许到单独元素的快速访问，因为哈希一旦计算，则它指代元素被放进的准确的桶。
+        不要求此容器的迭代顺序稳定    
+    */
+
+    std::unordered_multimap<std::string, int> map1 = {
+        {"1", 1}, {"1", 1}, {"2", 2}, {"3", 3}, {"4", 4}, {"4", 4}, {"4", 4}
+    };
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+
+    map1.insert({"5", 5});
+    // map1["6"] = 6; //不允许
+    SPACE::printMap(map1);
+
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+    
+    // std::cout << "3 -> " << map1["3"] << std::endl; //不通过key允许
+
+    std::unordered_map<std::string, int>::iterator search = map1.find("1");
+    if (search != map1.end()) {
+        std::cout << search->first << " " << search->second << std::endl;
+        map1.erase(search);
+    } else {
+        std::cout << "Not found\n";
+    }
+    SPACE::printMap(map1);
+
+    map1.clear();
+    std::cout << "size: " << map1.size()
+                << " max_size: " << map1.max_size()
+                << " is_empty: " << map1.empty()
+                << " bucket_count: " << map1.bucket_count()
+                << " max_bucket_count: " << map1.max_bucket_count()
+                << " load_factor:" << map1.load_factor()
+                << " max_load_factor:" << map1.max_load_factor()
+                << std::endl;
+
+    std::cout<<"---------------------------testUnordered_multimap end--------------------------------"<<std::endl;
+}
+
 
 #endif /* !CONTAINERTEST_H */
