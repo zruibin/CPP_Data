@@ -11,6 +11,7 @@
 #include "Macros.h"
 #include <iostream>
 #include "BubbleSort.hpp"
+#include "SelectionSort.hpp"
 
 NAMESPACE_START
 void testSort()
@@ -19,6 +20,7 @@ void testSort()
     std::cout<<"---------------------------testSort start--------------------------------"<<std::endl;
     
     SPACE::testBubbleSort();
+    SPACE::testSelectionSort();
 
     std::cout<<"---------------------------testSort end--------------------------------"<<std::endl;
 }
