@@ -13,4 +13,27 @@
 #define NAMESPACE_END }
 
 
+NAMESPACE_START
+template<typename T>
+void print(T t)
+{
+    for(auto &i : t) {
+        std::cout << i << " | ";
+    }
+    std::cout<<'\n';
+}
+NAMESPACE_END
+
+NAMESPACE_START
+template<typename T>
+void printMap(T t)
+{
+    for(auto &i : t) {
+        std::cout << i.first << ":" << i.second << " | ";
+    }
+    std::cout<<'\n';
+}
+NAMESPACE_END
+
+
 #endif /* !MACROS_H */

@@ -10,15 +10,18 @@
 
 #include "Macros.h"
 #include <iostream>
+#include "BubbleSort.hpp"
 
- NAMESPACE_START
+NAMESPACE_START
 void testSort()
 {
     std::cout<<'\n';
     std::cout<<"---------------------------testSort start--------------------------------"<<std::endl;
     
+    SPACE::testBubbleSort();
+
     std::cout<<"---------------------------testSort end--------------------------------"<<std::endl;
 }
- NAMESPACE_END
+NAMESPACE_END
 
 #endif /* !SORT_H */
