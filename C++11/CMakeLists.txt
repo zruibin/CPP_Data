@@ -73,19 +73,16 @@ set(SOURCES
 
 source_group(TREE "${CMAKE_SOURCE_DIR}" FILES ${HEADERS} ${SOURCES})
 
+include_directories("${PROJECT_SOURCE_DIR}/")
+
 # source_group(glad FILES ${GLAD_HEADERS} ${GLAD_SOURCES})
-# add_subdirectory(glad)
+include(./sort/sort.cmake)
 
 set(TARGET main)
 
-add_executable(${TARGET} ${HEADERS} ${SOURCES})
+add_executable(${TARGET} ${HEADERS} ${SOURCES} ${SORT_HEADERS})
 
 # target_link_libraries(${TARGET} PRIVATE 
-# "-framework Cocoa" 
-# "-framework OpenGL" 
-# "-framework IOKit"
-# "-framework CoreFoundation" 
-# libglfw3.a
-# libglad.a
+
 # )
 

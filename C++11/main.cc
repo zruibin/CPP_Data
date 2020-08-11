@@ -20,6 +20,7 @@ https://www.veaxen.com/c11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E4%B8%ADmake_shar
 #include <memory>
 
 #include "ContainerTest.hpp"
+#include "sort/Sort.hpp"
 
 class B 
 {
@@ -154,6 +155,7 @@ int main(int argc, char **argv )
 
     testMainContainer();
 
+    SPACE::testSort();
 }
 
 
