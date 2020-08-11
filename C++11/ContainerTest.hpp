@@ -22,6 +22,8 @@
 #include <map>
 #include <unordered_set>
 #include <unordered_map>
+#include <stack>
+#include <queue>
 
 #include "Macros.h"
 
@@ -60,6 +62,9 @@ void testUnordered_set(void);
 void testUnordered_multiset(void);
 void testUnordered_map(void);
 void testUnordered_multimap(void);
+void testStack(void);
+void testQueue(void);
+void testPriority_queue(void);
 
 void testMainContainer(void)
 {
@@ -78,7 +83,10 @@ void testMainContainer(void)
     testUnordered_multiset();
     testUnordered_map();
     testUnordered_multimap();
-    
+    testStack();
+    testQueue();
+    testPriority_queue();
+    std::cout<<'\n';
     std::cout<<"---------------------------testMainContainer end--------------------------------"<<std::endl;
 }
 
@@ -691,5 +699,132 @@ void testUnordered_multimap(void)
     std::cout<<"---------------------------testUnordered_multimap end--------------------------------"<<std::endl;
 }
 
+void testStack(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testStack start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/stack
+    /*
+        std::stack 类是容器适配器，它给予程序员栈的功能——特别是 FILO （先进后出）数据结构。
+        该类模板表现为底层容器的包装器——只提供特定函数集合。栈从被称作栈顶的容器尾部推弹元素。
+        标准容器 std::vector 、 std::deque 和 std::list 满足这些要求。若不为特定的 stack 类特化指定容器类，则使用标准容器 std::deque 。
+    */
+    std::stack<int, std::vector<int>> stack1;
+
+    std::cout << "size: " << stack1.size()
+                << " empty: " << stack1.empty()
+                << std::endl;
+    
+    stack1.push(10);
+    stack1.push(11);
+    stack1.push(12);
+
+    std::cout << "size: " << stack1.size()
+                << " empty: " << stack1.empty()
+                << std::endl;
+
+    std::cout << "top: " << stack1.top() << std::endl;
+
+    stack1.pop();
+
+    std::cout << "top: " << stack1.top() << std::endl;
+    std::cout << "size: " << stack1.size()
+                << " empty: " << stack1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testStack end--------------------------------"<<std::endl;
+}
+
+void testQueue(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testQueue start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/queue
+    /*
+        std::queue 类是容器适配器，它给予程序员队列的功能——尤其是 FIFO （先进先出）数据结构。
+        类模板表现为底层容器的包装器——只提供特定的函数集合。 queue 在底层容器尾端推入元素，从首端弹出元素。
+        标准容器 std::deque 和 std::list 满足这些要求。
+    */
+    std::queue<int, std::list<int>> queue1;
+
+    std::cout << "size: " << queue1.size()
+                << " empty: " << queue1.empty()
+                << std::endl;
+
+    queue1.push(10);
+    queue1.push(11);
+    queue1.push(12);
+    queue1.push(13);
+    queue1.push(14);
+
+    std::cout << "size: " << queue1.size()
+                << " empty: " << queue1.empty()
+                << std::endl;
+
+    std::cout << "front: " << queue1.front() << " | back: " << queue1.back() << std::endl;
+
+    queue1.pop();
+    queue1.pop();
+
+    std::cout << "front: " << queue1.front() << " | back: " << queue1.back() << std::endl;
+
+    std::cout << "size: " << queue1.size()
+                << " empty: " << queue1.empty()
+                << std::endl;
+
+    std::cout<<"---------------------------testQueue end--------------------------------"<<std::endl;
+}
+
+void testPriority_queue(void)
+{
+    std::cout<<'\n';
+    std::cout<<"---------------------------testPriority_queue start--------------------------------"<<std::endl;
+    //https://zh.cppreference.com/w/cpp/container/priority_queue
+    /*
+        priority_queue 是容器适配器，它提供常数时间的（默认）最大元素查找，对数代价的插入与释出。
+        可用用户提供的 Compare 更改顺序，例如，用 std::greater<T> 将导致最小元素作为 top() 出现。
+        用 priority_queue 工作类似管理某些随机访问容器中的堆，优势是不可能突然把堆非法化。
+    */
+    std::priority_queue<int, std::deque<int>> queue1;
+
+    std::cout << "size: " << queue1.size()
+                << " empty: " << queue1.empty()
+                << std::endl;
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2}) {
+        queue1.push(n);
+    }
+
+    std::cout << "size: " << queue1.size()
+                << " empty: " << queue1.empty()
+                << std::endl;
+    while(!queue1.empty()) {
+        std::cout << queue1.top() << " ";
+        queue1.pop();
+    } 
+    std::cout<<'\n';   
+
+    std::priority_queue<int, std::vector<int>, std::greater<int> > queue2;
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        queue2.push(n);
+    while(!queue2.empty()) {
+        std::cout << queue2.top() << " ";
+        queue2.pop();
+    } 
+    std::cout<<'\n';  
+ 
+    // 用 lambda 比较元素。
+    auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1); };
+    std::priority_queue<int, std::vector<int>, decltype(cmp)> queue3(cmp);
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        queue3.push(n);
+    while(!queue3.empty()) {
+        std::cout << queue3.top() << " ";
+        queue3.pop();
+    }   
+    std::cout<<'\n';
+
+    std::cout<<"---------------------------testPriority_queue end--------------------------------"<<std::endl;
+}
 
 #endif /* !CONTAINERTEST_H */
