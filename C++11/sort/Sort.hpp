@@ -12,6 +12,7 @@
 #include <iostream>
 #include "BubbleSort.hpp"
 #include "SelectionSort.hpp"
+#include "InsertionSort.hpp"
 
 NAMESPACE_START
 void testSort()
@@ -21,6 +22,7 @@ void testSort()
     
     SPACE::testBubbleSort();
     SPACE::testSelectionSort();
+    SPACE::testInsertionSort();
 
     std::cout<<"---------------------------testSort end--------------------------------"<<std::endl;
 }
