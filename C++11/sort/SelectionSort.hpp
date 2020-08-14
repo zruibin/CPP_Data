@@ -49,15 +49,15 @@ void testSelectionSort(void)
     std::cout<<'\n';
     std::cout<<"---------------------------testSelectionSort start--------------------------------"<<std::endl;
 
-    std::vector<size_t> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
+    std::vector<int> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
     SPACE::print(arr);
 
-    size_t length = arr.size();
-    size_t minIndex, temp;
+    int length = arr.size();
+    int minIndex, temp;
 
-    for (size_t i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++) {
         minIndex = i;
-        for (size_t j = i+1; j < length; j++) {
+        for (int j = i+1; j < length; j++) {
             if (arr[j] < arr[minIndex]) { // 寻找最小的数
                 minIndex = j; // 将最小数的索引保存
             }

@@ -40,15 +40,15 @@ void testBubbleSort(void)
     std::cout<<'\n';
     std::cout<<"---------------------------testBubbleSort start--------------------------------"<<std::endl;
 
-    std::vector<size_t> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
+    std::vector<int> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
     SPACE::print(arr);
 
     int length = arr.size();
-    for (size_t i = 0; i < length -1; ++i) {
-        for (size_t j = 0; j < length - i; j++) {
+    for (int i = 0; i < length -1; ++i) {
+        for (int j = 0; j < length - i; j++) {
             if (arr[j] > arr[j+1]) { // 相邻元素两两对比
                 // 元素交换
-                size_t temp = arr[j+1]; 
+                int temp = arr[j+1]; 
                 arr[j+1] = arr[j];
                 arr[j] = temp;
             }

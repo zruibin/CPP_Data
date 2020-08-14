@@ -45,14 +45,14 @@ void testShellSort(void)
 {
     std::cout<<'\n';
     std::cout<<"---------------------------testShellSort start--------------------------------"<<std::endl;
-    std::vector<size_t> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
+    std::vector<int> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
     SPACE::print(arr);
 
-    size_t len = arr.size();
-    for (size_t gap = floor(len / 2); gap > 0; gap = floor(gap / 2)) {
-        for (size_t i = gap; i < len; i++) {
-            size_t j = i;
-            size_t current = arr[i];
+    int len = arr.size();
+    for (int gap = floor(len / 2); gap > 0; gap = floor(gap / 2)) {
+        for (int i = gap; i < len; i++) {
+            int j = i;
+            int current = arr[i];
             while (j - gap >= 0 && current < arr[j - gap]) {
                  arr[j] = arr[j - gap];
                  j = j - gap;

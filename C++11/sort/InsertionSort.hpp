@@ -46,12 +46,12 @@ void testInsertionSort(void)
     std::cout<<'\n';
     std::cout<<"---------------------------testInsertionSort start--------------------------------"<<std::endl;
 
-    std::vector<size_t> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
+    std::vector<int> arr = {2,1,7,55,8,22,0,8,44,32,65,76,97,21,11};
     SPACE::print(arr);
 
-    size_t len = arr.size();
-    size_t preIndex, current;
-    for (size_t i = 1; i < len; i++) {
+    int len = arr.size();
+    int preIndex, current;
+    for (int i = 1; i < len; i++) {
         preIndex = i - 1;
         current = arr[i];
         while (preIndex >= 0 && arr[preIndex] > current) {

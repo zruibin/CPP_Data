@@ -41,7 +41,7 @@
 
 NAMESPACE_START
 
-using Vector = std::vector<size_t>;
+using Vector = std::vector<int>;
 
 Vector mergeSortRecursion(const Vector arr);
 Vector merge(const Vector left, const Vector right);
@@ -65,13 +65,13 @@ void testMergeSort(void)
 
 Vector mergeSortRecursion(const Vector arr)
 {
-    size_t len = arr.size();
+    int len = arr.size();
     if (len < 2) {
         return arr;
     }
 
-    size_t mid = floor(len/2);
-    std::vector<size_t>::const_iterator midIterator = arr.begin() + mid;
+    int mid = floor(len/2);
+    std::vector<int>::const_iterator midIterator = arr.begin() + mid;
     Vector left(arr.begin(), midIterator); //分片，前半部分
     Vector right(midIterator, arr.end()); //分片，后半部分
     
@@ -82,7 +82,7 @@ Vector merge(const Vector left, const Vector right)
 {
     Vector result;
 
-    size_t i = 0, j = 0;
+    int i = 0, j = 0;
     while (i < left.size() && j < right.size()) {
         if (left[i] <= right[j]) {
             result.push_back(left[i]);
