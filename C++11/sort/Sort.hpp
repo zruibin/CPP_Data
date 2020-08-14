@@ -16,6 +16,7 @@
 #include "ShellSort.hpp"
 #include "MergeSort.hpp"
 #include "QuickSort.hpp"
+#include "HeapSort.hpp"
 
 NAMESPACE_START
 void testSort()
@@ -29,6 +30,7 @@ void testSort()
     SPACE::testShellSort();
     SPACE::testMergeSort();
     SPACE::testQuickSort();
+    SPACE::testHeapSort();
 
     std::cout<<'\n';
     std::cout<<"---------------------------testSort end--------------------------------"<<std::endl;
