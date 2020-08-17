@@ -14,6 +14,7 @@
 #include "AbstractFactory.hpp"
 #include "Builder.hpp"
 #include "Prototype.hpp"
+#include "Singleton.hpp"
 
 NAMESPACE_START
 
@@ -26,6 +27,7 @@ void testDP(void)
     SPACE::testAbstractFactory();
     SPACE::testBuilder();
     SPACE::testPrototype();
+    SPACE::testSingleton();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
