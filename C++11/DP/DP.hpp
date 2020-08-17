@@ -26,6 +26,7 @@
 #include "Command.hpp"
 #include "Observer.hpp"
 #include "Strategy.hpp"
+#include "State.hpp"
 
 
 NAMESPACE_START
@@ -51,6 +52,7 @@ void testDP(void)
     SPACE::testCommand();
     SPACE::testObserver();
     SPACE::testStrategy();
+    SPACE::testState();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
