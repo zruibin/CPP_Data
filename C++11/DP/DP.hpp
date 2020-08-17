@@ -20,6 +20,7 @@
 #include "Composite.hpp"
 #include "Decorator.hpp"
 #include "Proxy.hpp"
+#include "TemplateMethod.hpp"
 
 NAMESPACE_START
 
@@ -38,6 +39,7 @@ void testDP(void)
     SPACE::testComposite();
     SPACE::testDecorator();
     SPACE::testProxy();
+    SPACE::testTemplateMethod();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
