@@ -22,6 +22,7 @@
 #include "Proxy.hpp"
 #include "TemplateMethod.hpp"
 #include "ChainOfResponsibility.hpp"
+#include "Flyweight.hpp"
 
 
 NAMESPACE_START
@@ -43,6 +44,7 @@ void testDP(void)
     SPACE::testProxy();
     SPACE::testTemplateMethod();
     SPACE::testChainOfResponsibility();
+    SPACE::testFlyweight();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
