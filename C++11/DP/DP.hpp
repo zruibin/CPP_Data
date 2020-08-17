@@ -25,6 +25,7 @@
 #include "Flyweight.hpp"
 #include "Command.hpp"
 #include "Observer.hpp"
+#include "Strategy.hpp"
 
 
 NAMESPACE_START
@@ -49,6 +50,7 @@ void testDP(void)
     SPACE::testFlyweight();
     SPACE::testCommand();
     SPACE::testObserver();
+    SPACE::testStrategy();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
