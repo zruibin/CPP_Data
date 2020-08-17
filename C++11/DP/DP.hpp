@@ -24,6 +24,7 @@
 #include "ChainOfResponsibility.hpp"
 #include "Flyweight.hpp"
 #include "Command.hpp"
+#include "Observer.hpp"
 
 
 NAMESPACE_START
@@ -47,6 +48,7 @@ void testDP(void)
     SPACE::testChainOfResponsibility();
     SPACE::testFlyweight();
     SPACE::testCommand();
+    SPACE::testObserver();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
