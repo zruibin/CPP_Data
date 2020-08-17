@@ -13,6 +13,7 @@
 #include "Factory.hpp"
 #include "AbstractFactory.hpp"
 #include "Builder.hpp"
+#include "Prototype.hpp"
 
 NAMESPACE_START
 
@@ -24,6 +25,7 @@ void testDP(void)
     SPACE::testFactory();
     SPACE::testAbstractFactory();
     SPACE::testBuilder();
+    SPACE::testPrototype();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
