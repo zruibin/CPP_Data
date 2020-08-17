@@ -12,6 +12,7 @@
 #include "Macros.h"
 #include "Factory.hpp"
 #include "AbstractFactory.hpp"
+#include "Builder.hpp"
 
 NAMESPACE_START
 
@@ -22,6 +23,7 @@ void testDP(void)
     
     SPACE::testFactory();
     SPACE::testAbstractFactory();
+    SPACE::testBuilder();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
