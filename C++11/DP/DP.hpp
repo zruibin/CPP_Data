@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Macros.h"
 #include "Factory.hpp"
+#include "AbstractFactory.hpp"
 
 NAMESPACE_START
 
@@ -20,6 +21,7 @@ void testDP(void)
     std::cout<<"---------------------------testDP start--------------------------------"<<std::endl;
     
     SPACE::testFactory();
+    SPACE::testAbstractFactory();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
