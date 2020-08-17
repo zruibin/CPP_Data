@@ -64,6 +64,7 @@ LINK_LIBRARIES(pthread dl)
 
 set(HEADERS
     Macros.h
+    Features.hpp
     ContainerTest.hpp
 )
 
@@ -77,10 +78,11 @@ include_directories("${PROJECT_SOURCE_DIR}/")
 
 # source_group(glad FILES ${GLAD_HEADERS} ${GLAD_SOURCES})
 include(./sort/sort.cmake)
+include(./DP/DP.cmake)
 
 set(TARGET main)
 
-add_executable(${TARGET} ${HEADERS} ${SOURCES} ${SORT_HEADERS})
+add_executable(${TARGET} ${HEADERS} ${SOURCES} ${SORT_HEADERS} ${DP_HEADERS})
 
 # target_link_libraries(${TARGET} PRIVATE 
 
