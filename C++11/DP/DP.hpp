@@ -23,6 +23,7 @@
 #include "TemplateMethod.hpp"
 #include "ChainOfResponsibility.hpp"
 #include "Flyweight.hpp"
+#include "Command.hpp"
 
 
 NAMESPACE_START
@@ -45,6 +46,7 @@ void testDP(void)
     SPACE::testTemplateMethod();
     SPACE::testChainOfResponsibility();
     SPACE::testFlyweight();
+    SPACE::testCommand();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
