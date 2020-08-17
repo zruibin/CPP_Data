@@ -15,6 +15,7 @@
 #include "Builder.hpp"
 #include "Prototype.hpp"
 #include "Singleton.hpp"
+#include "Adapt.hpp"
 
 NAMESPACE_START
 
@@ -28,6 +29,7 @@ void testDP(void)
     SPACE::testBuilder();
     SPACE::testPrototype();
     SPACE::testSingleton();
+    SPACE::testAdapt();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
