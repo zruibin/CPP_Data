@@ -21,6 +21,8 @@
 #include "Decorator.hpp"
 #include "Proxy.hpp"
 #include "TemplateMethod.hpp"
+#include "ChainOfResponsibility.hpp"
+
 
 NAMESPACE_START
 
@@ -40,6 +42,7 @@ void testDP(void)
     SPACE::testDecorator();
     SPACE::testProxy();
     SPACE::testTemplateMethod();
+    SPACE::testChainOfResponsibility();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
