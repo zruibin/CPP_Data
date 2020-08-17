@@ -18,6 +18,7 @@
 #include "Adapt.hpp"
 #include "Bridge.hpp"
 #include "Composite.hpp"
+#include "Decorator.hpp"
 
 NAMESPACE_START
 
@@ -34,6 +35,7 @@ void testDP(void)
     SPACE::testAdapt();
     SPACE::testBridge();
     SPACE::testComposite();
+    SPACE::testDecorator();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
