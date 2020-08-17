@@ -19,6 +19,7 @@
 #include "Bridge.hpp"
 #include "Composite.hpp"
 #include "Decorator.hpp"
+#include "Proxy.hpp"
 
 NAMESPACE_START
 
@@ -36,6 +37,7 @@ void testDP(void)
     SPACE::testBridge();
     SPACE::testComposite();
     SPACE::testDecorator();
+    SPACE::testProxy();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
