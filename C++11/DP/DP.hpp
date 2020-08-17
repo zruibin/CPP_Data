@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include "Macros.h"
-
+#include "Factory.hpp"
 
 NAMESPACE_START
 
@@ -19,8 +19,9 @@ void testDP(void)
     std::cout<<'\n';
     std::cout<<"---------------------------testDP start--------------------------------"<<std::endl;
     
+    SPACE::testFactory();
     
-    std::cout<<"---------------------------testDP start--------------------------------"<<std::endl;
+    std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
 
 NAMESPACE_END
