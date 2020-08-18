@@ -28,6 +28,7 @@
 #include "Strategy.hpp"
 #include "State.hpp"
 #include "Iterator.hpp"
+#include "Memento.hpp"
 
 
 NAMESPACE_START
@@ -55,6 +56,7 @@ void testDP(void)
     SPACE::testStrategy();
     SPACE::testState();
     SPACE::testIterator();
+    SPACE::testMemento();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
