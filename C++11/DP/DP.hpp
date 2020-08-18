@@ -27,6 +27,7 @@
 #include "Observer.hpp"
 #include "Strategy.hpp"
 #include "State.hpp"
+#include "Iterator.hpp"
 
 
 NAMESPACE_START
@@ -53,6 +54,7 @@ void testDP(void)
     SPACE::testObserver();
     SPACE::testStrategy();
     SPACE::testState();
+    SPACE::testIterator();
     
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
