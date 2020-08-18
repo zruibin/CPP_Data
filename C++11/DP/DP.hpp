@@ -29,7 +29,7 @@
 #include "State.hpp"
 #include "Iterator.hpp"
 #include "Memento.hpp"
-
+#include "Visitor.hpp"
 
 NAMESPACE_START
 
@@ -57,7 +57,9 @@ void testDP(void)
     SPACE::testState();
     SPACE::testIterator();
     SPACE::testMemento();
-    
+    SPACE::testVisitor();
+
+    std::cout<<'\n';
     std::cout<<"---------------------------testDP end--------------------------------"<<std::endl;
 }
 
